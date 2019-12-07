@@ -96,13 +96,13 @@ dtedit <- function(input, output, name, thedata,
 				   numeric.width = '100px',
 				   select.width = '100%',
 				   defaultPageLength = 10,
-				   title.delete = 'Delete',
-				   title.edit = 'Edit',
-				   title.add = 'New',
-				   label.delete = 'Delete',
-				   label.edit = 'Edit',
-				   label.add = 'New',
-				   label.copy = 'Copy',
+				   title.delete = 'Excluir',
+				   title.edit = 'Editar',
+				   title.add = 'Nova',
+				   label.delete = 'Excluir',
+				   label.edit = 'Editar',
+				   label.add = 'Nova',
+				   label.copy = 'Copiar',
 				   show.delete = TRUE,
 				   show.update = TRUE,
 				   show.insert = TRUE,
@@ -171,7 +171,7 @@ dtedit <- function(input, output, name, thedata,
 
 	output[[DataTableName]] <- DT::renderDataTable({
 		thedata[,view.cols]
-	}, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
+	}, extension="Responsive",escape=FALSE, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
 
 	getFields <- function(typeName, values) {
 		fields <- list()
