@@ -174,7 +174,7 @@ dtedit <- function(input, output, name, thedata,
 # 	}, extension="Responsive",escape=FALSE, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
 
 	output[[DataTableName]] <- DT::renderDataTable({
-	 dat<- DT::datatable(thedata[,view.cols], extension="Responsive", filter='top', escape=FALSE, options = datatable.options,  selection='single', rownames=FALSE) %>%  
+	 dat<- DT::datatable(thedata[,view.cols], extension="Responsive", filter='top', escape=FALSE, options = datatable.options,  selection='single', rownames=FALSE,width='1000px') %>%  
 	  DT::formatStyle("julgado",
 	                    WhiteSpace='pre-wrap',
 	                    textAlign='justify')
