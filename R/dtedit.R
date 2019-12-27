@@ -174,10 +174,11 @@ dtedit <- function(input, output, name, thedata,
 # 	}, extension="Responsive",escape=FALSE, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
 
 	output[[DataTableName]] <- DT::renderDataTable({
-	  DT::datatable(thedata[,view.cols], extension="Responsive", filter='top', options = datatable.options,  selection='single', rownames=FALSE) %>%  
+	 dat<- DT::datatable(thedata[,view.cols], extension="Responsive", filter='top', escape=TRUE, options = datatable.options,  selection='single', rownames=FALSE) %>%  
 	  DT::formatStyle("julgado",
 	                    WhiteSpace='pre-wrap',
 	                    textAlign='justify')
+	 return(dat)
 	},server=TRUE)
 	
 	getFields <- function(typeName, values) {
