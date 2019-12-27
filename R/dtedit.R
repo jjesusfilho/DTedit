@@ -168,11 +168,18 @@ dtedit <- function(input, output, name, thedata,
 			thedata[,i] <- sapply(thedata[,i], FUN = function(x) { paste0(x, collapse = ', ') })
 		}
 	}
+# 
+# 	output[[DataTableName]] <- DT::renderDataTable({
+# 		thedata[,view.cols]
+# 	}, extension="Responsive",escape=FALSE, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
 
 	output[[DataTableName]] <- DT::renderDataTable({
-		thedata[,view.cols]
-	}, extension="Responsive",escape=FALSE, options = datatable.options, server=TRUE, selection='single', rownames=FALSE)
-
+	  DT::datatable(thedata[,view.cols], extension="Responsive",escape=FALSE, options = datatable.options, server=TRUE, selection='single', rownames=FALSE) %>%  
+	  DT::formatStyle("julgado",
+	                    WhiteSpace='pre-wrap',
+	                    textAlign='justify')
+	})
+	
 	getFields <- function(typeName, values) {
 		fields <- list()
 		for(i in seq_along(edit.cols)) {
